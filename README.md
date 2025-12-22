@@ -2,7 +2,8 @@
 
 Transform your product photos into professional studio shots with perfect lighting and seamless white backgrounds in seconds using the power of AI.
 
-![Studio Quality AI Screenshot](./public/image.png)
+![Studio Quality AI Screenshot](./public/images.png)
+![Image](./public/image.png)
 
 ## 🎯 Overview
 
