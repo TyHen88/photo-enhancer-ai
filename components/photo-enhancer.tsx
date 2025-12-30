@@ -54,6 +54,7 @@ export default function PhotoEnhancer() {
             image: base64Image,
             productDescription: productDescription || "product",
           }),
+
         })
 
         if (!response.ok) {
@@ -82,6 +83,28 @@ export default function PhotoEnhancer() {
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
+  }
+
+  const handleProgress = (progress: number = 0) => {
+    return (
+      <div className="flex flex-col gap-3 rounded-lg border bg-card p-4 shadow-sm">
+        <div className="flex items-center gap-3">
+          <Loader2 className="h-5 w-5 animate-spin text-primary" />
+          <div className="flex-1">
+            <p className="text-sm font-medium text-foreground">Processing your image...</p>
+            <p className="text-xs text-muted-foreground">This may take a few moments</p>
+          </div>
+          <span className="text-sm font-semibold text-primary">{Math.round(progress)}%</span>
+        </div>
+        <div className="relative h-2 w-full overflow-hidden rounded-full bg-muted">
+          <div
+            className="h-full rounded-full bg-gradient-to-r from-primary to-primary/80 transition-all duration-300 ease-out"
+            style={{ width: `${progress}%` }}
+          />
+          <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        </div>
+      </div>
+    )
   }
 
   return (

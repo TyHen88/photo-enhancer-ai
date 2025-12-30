@@ -34,20 +34,37 @@ export async function POST(req: Request) {
             },
             {
               type: "text",
-              text: `Analyze this product image and create a detailed, precise prompt for generating a professional studio product shot. 
+              text: `You are a professional product photography expert. Analyze this product image carefully and create a highly detailed, precise prompt for DALL-E 3.
 
-The product is: ${productDescription || "a product"}
+CRITICAL REQUIREMENT: The product itself must appear EXACTLY as shown in the reference image. Only the BACKGROUND should be changed. Do NOT alter, modify, or recreate the product - preserve it identically.
 
-Requirements for the enhanced image:
-- Isolate the product on a seamless, solid stark white background (#FFFFFF)
-- Apply even, bright softbox lighting to eliminate harsh shadows
-- Ensure high contrast and sharp focus on textures and materials
-- 8K ultra-high definition quality
-- Clean and commercial aesthetic suitable for e-commerce
-- The product should be centered and well-composed
-- No watermarks or text overlays
+Product Information: ${productDescription || "Analyze the product from the image"}
 
-Describe the product in detail (colors, materials, textures, shape, size, key features) and create a comprehensive prompt that DALL-E 3 can use to generate the enhanced studio shot. Focus on the product's visual characteristics and how it should appear in the final image.`,
+ANALYSIS TASK:
+1. Examine the product in detail:
+   - Exact colors, shades, and tones (be very specific)
+   - Precise materials and surface textures
+   - Exact shape, proportions, and dimensions
+   - All visible features, buttons, labels, text, logos, branding
+   - Current lighting on the product (preserve the product's appearance)
+   - Any unique characteristics or details
+
+2. Identify the current background:
+   - Describe what needs to be replaced
+   - Note any shadows or reflections that should be removed
+
+OUTPUT PROMPT REQUIREMENTS:
+Create a DALL-E 3 prompt that:
+- Describes the product with EXTREME precision to match the reference image exactly
+- Specifies "seamless pure white background (#FFFFFF), no shadows, no gradients, clean studio background"
+- States "The product appears exactly as shown in the reference image"
+- Includes "Professional product photography, e-commerce style"
+- Emphasizes "Preserve all product details, colors, textures, and features exactly as shown"
+- Specifies "Remove background only, keep product unchanged"
+- Adds "High resolution, sharp focus, commercial photography quality"
+- Includes "Centered composition, clean white background, no text overlays, no watermarks"
+
+The prompt must ensure DALL-E 3 recreates the EXACT same product but with a clean white studio background. Be extremely specific about product details to ensure accuracy.`,
             },
           ],
         },
